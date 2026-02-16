@@ -93,7 +93,6 @@ class Object {
         std::string MaxHeightString = "Max Height: %.2f", maxHeight;
         std::string RangeString = "Range: %.2f", range;
         std::string TimeString = "Time: %.2f", T;
-
         DrawText(VelocityXString.c_str(),50,100, 21, BLACK);
         DrawText(VelocityYString.c_str(),50,125, 21, BLACK);
         DrawText(AngleString.c_str(),50,150, 21, BLACK);
