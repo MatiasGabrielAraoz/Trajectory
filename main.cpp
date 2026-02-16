@@ -62,9 +62,6 @@ class Object {
 
         }
     }
-    void Draw() {
-        //
-    }
     void GetValues() {
 
         GuiSlider(
