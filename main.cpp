@@ -27,25 +27,30 @@ class Object {
     Vector2 Position;
     float Force; // m/s
     float InitialAngle; // Degrees
-    // Normal Variables
+    //Variables
     float T;
     float range;
+    float maxHeight;
     float VelocityX;
     float VelocityY;
-
+    //Constructor
     Object (Vector2 Position,float Force, float initialAngle) {
         this->Position = Position;
         this->Force = Force;
         this->InitialAngle = initialAngle;
     }
+    //Get all the values, should be executed in the Update func
     void CalculateValues() {
         VelocityX = Force * cosd(InitialAngle);
         VelocityY = Force * sind(InitialAngle);
         T = (2 * Force * sind(InitialAngle)) / GRAVITY;
         range = VelocityX * T;
-    }
-    void Update() {
+        maxHeight = (VelocityY * VelocityY) / (2*GRAVITY);
 
+    }
+    //Calculates and displays the trajectory
+    void Update() {
+        CalculateValues();
         for (float x = 0; x < 10;) {
             float x_world = VelocityX * x;
             float y_world = VelocityY * x - 0.5f * GRAVITY * x * x;
@@ -62,6 +67,7 @@ class Object {
 
         }
     }
+    // Creates 2 sliders and sets one for the force and one for the angle
     void GetValues() {
 
         GuiSlider(
@@ -80,6 +86,35 @@ class Object {
             90
         );
     }
+    void ShowValues() {
+        char* AngleString;
+        char* VelocityXString;
+        char* VelocityYString;
+        char* MaxHeightString;
+        char* RangeString;
+        char* TimeString;
+        asprintf(&AngleString, "Angle: %.2f", InitialAngle);
+        asprintf(&VelocityXString, "VelocityX: %.2f", VelocityX);
+        asprintf(&VelocityYString, "VelocityY: %.2f", VelocityY);
+        asprintf(&MaxHeightString, "Max Height: %.2f", maxHeight);
+        asprintf(&RangeString, "Range: %.2f", range);
+        asprintf(&TimeString, "Time: %.2f", T);
+
+        DrawText(VelocityXString,50,100, 21, BLACK);
+        DrawText(VelocityYString,50,125, 21, BLACK);
+        DrawText(AngleString,50,150, 21, BLACK);
+        DrawText(MaxHeightString,50,175, 21, BLACK);
+        DrawText(RangeString,50,200, 21, BLACK);
+        DrawText(TimeString,50,225, 21, BLACK);
+
+        free(AngleString);
+        free(VelocityXString);
+        free(VelocityYString);
+        free(MaxHeightString);
+        free(RangeString);
+        free(TimeString);
+    }
+    //Debug function: displays in the terminal all the variables that gets calculated
     void ShowCalcs() {
         float VelocityX = Force * cosd(InitialAngle);
         float VelocityY = Force * sind(InitialAngle);
@@ -107,6 +142,7 @@ int main() {
         BeginDrawing();
         ClearBackground(RAYWHITE);
         obj.Update();
+        obj.ShowValues();
         EndDrawing();
     }
     return 0;

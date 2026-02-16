@@ -15,7 +15,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 # Usar la ubicación exacta de raygui
-set(RAYGUI_INCLUDE_DIR "/home/matias/vcpkg/installed/x64-linux/include")
+set(RAYGUI_INCLUDE_DIR "$ENV{HOME}/vcpkg/installed/x64-linux/include")
 
 if(EXISTS "${RAYGUI_INCLUDE_DIR}/raygui.h")
     message(STATUS "✅ raygui encontrado en: ${RAYGUI_INCLUDE_DIR}")
