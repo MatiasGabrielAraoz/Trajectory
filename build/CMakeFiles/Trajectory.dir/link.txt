@@ -1,1 +1,0 @@
-/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/Trajectory.dir/link.d CMakeFiles/Trajectory.dir/main.cpp.o -o Trajectory  vcpkg_installed/x64-linux/lib/libraylib.a vcpkg_installed/x64-linux/lib/libglfw3.a /usr/lib/librt.a -lm /usr/lib/libdl.a
