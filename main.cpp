@@ -87,18 +87,18 @@ class Object {
         );
     }
     void ShowValues() {
-        std::string AngleString = "Angle: %.2f", InitialAngle;
-        std::string VelocityXString = "VelocityX: %.2f", VelocityX;
-        std::string VelocityYString = "VelocityY: %.2f", VelocityY;
-        std::string MaxHeightString = "Max Height: %.2f", maxHeight;
-        std::string RangeString = "Range: %.2f", range;
-        std::string TimeString = "Time: %.2f", T;
-        DrawText(VelocityXString.c_str(),50,100, 21, BLACK);
-        DrawText(VelocityYString.c_str(),50,125, 21, BLACK);
-        DrawText(AngleString.c_str(),50,150, 21, BLACK);
-        DrawText(MaxHeightString.c_str(),50,175, 21, BLACK);
-        DrawText(RangeString.c_str(),50,200, 21, BLACK);
-        DrawText(TimeString.c_str(),50,225, 21, BLACK);
+        std::string AngleString = "Angle: " + std::to_string(InitialAngle) + "°";
+        std::string VelocityXString = "VelocityX: " + std::to_string(VelocityX) + "M/s";
+        std::string VelocityYString = "VelocityY: " + std::to_string(VelocityY) + "M/s";
+        std::string MaxHeightString = "Max Height: " + std::to_string(maxHeight) + "M";
+        std::string RangeString = "Range: " + std::to_string(range) + "M";
+        std::string TimeString = "Time: " + std::to_string(T) + "S";
+        DrawText(VelocityXString.c_str(),50,100, 16, BLACK);
+        DrawText(VelocityYString.c_str(),50,125, 16, BLACK);
+        DrawText(AngleString.c_str(),50,150, 16, BLACK);
+        DrawText(MaxHeightString.c_str(),50,175, 16, BLACK);
+        DrawText(RangeString.c_str(),50,200, 16, BLACK);
+        DrawText(TimeString.c_str(),50,225, 16, BLACK);
     }
     //Debug function: displays in the terminal all the variables that gets calculated
     void ShowCalcs() {
